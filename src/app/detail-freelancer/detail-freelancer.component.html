@@ -1,0 +1,82 @@
+<div class="row p-2 d-flex justify-content-center">
+
+
+    <div class="col card mb-3 shadow">
+        <div class="row card-body">
+            <div class="col-6">
+                <div class="row">
+                    <h4>{{namePage}}</h4>
+                </div>
+                <div class="row">
+                    <div class="col">
+
+                        <a routerLink="/">Contact</a>
+                        >
+                        <span>Detail</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 d-flex flex-row-reverse">
+                <button class="button button--pan" (click)="goBack()">
+                    <span>
+                        Back
+                    </span>
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="row d-flex justify-content-center">
+
+    <div *ngIf="freelancer; else second">
+        <div class="col card p-2 shadow">
+            <div class="card-body">
+                <h5 style="font-weight:700 ; color: blue;" class="mb-3">Detail Contact</h5>
+                <div class="row mb-2">
+                    <div class="col-2">
+                        Name
+                    </div>
+                    <div class="col-10">
+                        {{freelancer.name}}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-2">
+                        Category
+                    </div>
+                    <div class="col-10">
+                        {{freelancer.skill}}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-2">
+                        Phone
+                    </div>
+                    <div class="col-10">
+                        {{freelancer.phone | phone}}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-2">
+                        Notes
+                    </div>
+                    <div class="col-10">
+                        {{freelancer.notes}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #second>
+        <div class="col card p-2 shadow">
+            <div class="card-body">
+
+                <p>Data Kosong</p>
+            </div>
+        </div>
+    </ng-template>
+</div>

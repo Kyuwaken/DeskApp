@@ -1,0 +1,107 @@
+<div class="row p-2 d-flex justify-content-center">
+
+
+    <div class="col card mb-3 shadow">
+        <div class="row card-body">
+            <div class="col-6">
+                <div class="row">
+                    <h4>{{namePage}}</h4>
+                </div>
+                <div class="row">
+                    <div class="col">
+
+                        <a routerLink="/">Contact</a>
+                        >
+                        <span>Add new</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 d-flex flex-row-reverse">
+                <button class="button button--pan" (click)="goBack()">
+                    <span>
+                        Back
+                    </span>
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="row p-2">
+    <div class="col card shadow p-3" [hidden]="submitted">
+        <h4 style="color: blue;">Add New Contact Form</h4>
+        <h6>Input your contact detail here</h6>
+        <br>
+        <form (ngSubmit)="onSubmit()" #freelancerForm="ngForm">
+            <div class="row form-group mb-3">
+                <div class="col-2">
+                    <label>Name</label>
+                </div>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="modelFreelancer.name"
+                        placeholder="Johnny Brown" name="name" #name="ngModel" />
+                </div>
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    Name is required
+                </div>
+            </div>
+            <div class="row form-group mb-3">
+                <div class="col-2">
+                    <label>Category</label>
+                </div>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="skill" required [(ngModel)]="modelFreelancer.skill"
+                        placeholder="angular developer, java spring boot developer, scrum master" name="skill"
+                        #skill="ngModel" />
+                </div>
+                <div [hidden]="skill.valid || skill.pristine" class="alert alert-danger">
+                    Category is required
+                </div>
+            </div>
+            <div class="row form-group mb-3">
+                <div class="col-2">
+                    <label>Phone</label>
+                </div>
+                <div class="col-10">
+                    <input type="text" maxlength="8" (keypress)="validateNo($event)" class="form-control" id="phone"
+                        placeholder="phone number max 8 digits, with formatted number" required
+                        [(ngModel)]="modelFreelancer.phone" name="phone" #phone="ngModel" />
+                </div>
+                <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">
+                    Phone is required
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-2">
+                    <label>Notes</label>
+                </div>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="notes" required [(ngModel)]="modelFreelancer.notes"
+                        placeholder="any text you need to remember him as what" name="notes" #notes="ngModel" />
+                </div>
+                <div [hidden]="notes.valid || notes.pristine" class="alert alert-danger">
+                    Notes is required
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-success" [disabled]="!freelancerForm.form.valid">
+                Submit
+            </button>
+        </form>
+    </div>
+    <div [hidden]="!submitted">
+        <h2>Berikut adalah data yang sudah anda kirim</h2>
+        <div class="row">
+            <div class="col-xs-3">Name</div>
+            <div class="col-xs-9">{{modelFreelancer.name}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Phone</div>
+            <div class="col-xs-9">{{modelFreelancer.phone}}</div>
+        </div>
+        <br>
+        <button type="button" class="btn btn-secondary" (click)="submitted=false">Back</button>
+    </div>
+</div>
