@@ -91,15 +91,42 @@
             </button>
         </form>
     </div>
-    <div [hidden]="!submitted">
-        <h2>Berikut adalah data yang sudah anda kirim</h2>
-        <div class="row">
-            <div class="col-xs-3">Name</div>
-            <div class="col-xs-9">{{modelFreelancer.name}}</div>
+
+
+    <div class="col card shadow p-3" [hidden]="!submitted">
+        <h4 style="color: blue;">Success</h4>
+        <h5>Here is your data</h5>
+        <div class="row mb-3">
+            <div class="col-2">
+                <span>Name</span>
+            </div>
+            <div class="col-10">
+                <span>{{modelFreelancer.name}}</span>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-xs-3">Phone</div>
-            <div class="col-xs-9">{{modelFreelancer.phone}}</div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <span>Category</span>
+            </div>
+            <div class="col-10">
+                <span>{{modelFreelancer.skill}}</span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <span>Phone</span>
+            </div>
+            <div class="col-10">
+                <span>{{modelFreelancer.phone | phone}}</span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <span>Notes</span>
+            </div>
+            <div class="col-10">
+                <span>{{modelFreelancer.notes}}</span>
+            </div>
         </div>
         <br>
         <button type="button" class="btn btn-secondary" (click)="submitted=false">Back</button>
