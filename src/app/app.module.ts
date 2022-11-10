@@ -9,6 +9,7 @@ import { ChildFreelancerComponent } from './child-freelancer/child-freelancer.co
 import { DetailFreelancerComponent } from './detail-freelancer/detail-freelancer.component';
 import { AddFreelancerComponent } from './add-freelancer/add-freelancer.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

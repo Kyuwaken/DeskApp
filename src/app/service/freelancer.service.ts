@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Freelancer } from '../model/freelancer';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -8,6 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class FreelancerService {
   private freelancerUrl: string = 'http://localhost:3005/freelancers'
+  private find = new BehaviorSubject("")
+  currentFind = this.find.asObservable()
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({ 'Content-type': 'application/json' })
@@ -18,6 +20,9 @@ export class FreelancerService {
   getFreelancer(id: number): Observable<Freelancer> {
     const urlByID = `${this.freelancerUrl}/${id}`
     return this.http.get<Freelancer>(urlByID)
+  }
+  getFreelancerSearch(data: string) {
+    this.find.next(data)
   }
   addFreelancer(freelancer: Freelancer): Observable<Freelancer> {
     return this.http.post<Freelancer>(this.freelancerUrl, freelancer, this.httpOptions)

@@ -9,13 +9,14 @@ import { FreelancerService } from '../service/freelancer.service';
 })
 export class ChildFreelancerComponent implements OnInit {
   @Input() childFreelancer!: Freelancer[]
-
+  find!: string
   constructor(private freelancerService: FreelancerService) { }
   deleteFreelancer(id: number): void {
     let index = this.childFreelancer.findIndex(d => d.id === id)
     this.freelancerService.deleteFreeLancer(id).subscribe(a => this.childFreelancer.splice(index, 1))
   }
   ngOnInit(): void {
+    this.freelancerService.currentFind.subscribe(a => this.find = a)
   }
 
 }

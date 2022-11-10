@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FreelancerService } from '../service/freelancer.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  find!: string
+  constructor(private freelancerService: FreelancerService) { }
+  findData(e: any) {
+    this.freelancerService.getFreelancerSearch(e)
+  }
 
   ngOnInit(): void {
   }
